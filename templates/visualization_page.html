@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization Page</title>
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/premium-photo/creative-glowing-downward-candlestick-forex-chart-blurry-background-crisis-financial-loss-crash-concept-3d-rendering_670147-63749.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center; /* Center align buttons */
+            color: #ffffff; /* White color */
+        }
+        
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+            font-weight: bold; /* Make the text bold */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+            margin-bottom: 20px; /* Add some bottom margin for spacing */
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row; /* Arrange buttons horizontally */
+            margin-bottom: 20px; /* Add some bottom margin for spacing */
+        }
+        
+        .button-box {
+            background-color: rgba(113, 111, 111, 0.5); /* Semi-transparent black background */
+            padding: 20px; /* Add padding */
+            border-radius: 10px; /* Rounded corners */
+            margin: 10px; /* Add margin */
+            transition: transform 0.3s; /* Smooth transition for transform property */
+        }
+        .button-box:hover {
+            transform: translateY(-5px); /* Move the button box upwards on hover */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* Add a shadow on hover */
+        }
+        .button-box p{
+            text-align: justify;
+            margin-bottom: 10px; /* Add some bottom margin for spacing */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 10px;
+            background-color: #890370; /* Purple color */
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold; /* Make the text bold */
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+        
+        button:hover {
+            background-color: #ea0395; /* Light gray background on hover */
+        }
+        
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>VISUALISE THE CHANGES</h1><br>
+    <div class="button-container">
+        <div class="button-box">
+            <p>This feature displays forest cover change data for each year on a map, providing district-wise information. Additionally, it includes predictive capabilities to forecast future changes and an alert system to notify users about areas experiencing high deforestation rates.</p>
+            <button id="year_wise_page_Button">Year-wise Graphs</button>
+        </div>
+        <div class="button-box">
+            <p>With this function, users can compare forest cover data between any two years. It enables side-by-side comparison to identify differences and trends over time, facilitating deeper insights into forest dynamics and changes.</p>
+            <button id="compareButton">Compare Two Years</button>
+        </div>
+        <div class="button-box">
+            <p>This feature aggregates deforestation data from all years into a single graph, allowing users to visualize and analyze long-term trends comprehensively. By consolidating the information, it offers a holistic view of forest cover changes over time, aiding in informed decision-making and environmental management.</p>
+            <button id="openTkinterButton">Compare All Years</button>
+        </div>
+    </div>
+    <p id="executionMessage"></p>
+
+    <script>
+        function showLoading() {
+            document.getElementById('executionMessage').innerHTML = '<div class="loading">Loading...</div><div class="spinner"></div>';
+        }
+
+        function hideLoading() {
+            document.getElementById('executionMessage').innerHTML = '';
+        }
+
+        document.getElementById('year_wise_page_Button').addEventListener('click', function() {
+            showLoading();
+            // Make an AJAX request to trigger the execution of the Tkinter script
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/year_wise_page', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Display a message to indicate that the script is being executed
+                    document.getElementById('executionMessage').textContent = xhr.responseText;
+                    hideLoading(); // Hide loading animation when Tkinter window is loaded
+                }
+            };
+            xhr.send();
+        });
+        document.getElementById('compareButton').addEventListener('click', function() {
+            showLoading();
+            fetch('/compare_page', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error))
+            .finally(() => hideLoading()); // Hide loading animation regardless of success or failure
+        });
+        document.getElementById('openTkinterButton').addEventListener('click', function() {
+            showLoading();
+            fetch('/show_bar_graph_tkinter', {
+                method: 'GET',
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Display the response message
+                document.getElementById('executionMessage').textContent = data;
+            })
+            .catch(error => console.error('Error:', error))
+            .finally(() => hideLoading()); // Hide loading animation regardless of success or failure
+        });
+    </script>
+</body>
+</html>

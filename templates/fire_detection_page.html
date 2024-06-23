@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection</title>
+    <style>
+        body {
+            /*background-image: url('https://plus.unsplash.com/premium_photo-1664303804407-d9c008c38ca1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            */
+            background-image: url('https://static.electronicsweekly.com/wp-content/uploads/2022/07/08151153/forest-1-shutterstock_1337691431-1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+            color: #42d93f; /* Dark green color */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+            font-weight: bold; /* Make the text bold */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+            margin-bottom: 20px; /* Add some bottom margin for spacing */
+            font-size: 50px;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.57);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        }
+        form {
+            text-align: center;
+        }
+        input[type="file"],
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            transition: box-shadow 0.3s; /* Smooth transition for the shadow effect */
+            background-color: aliceblue;
+        }
+        input[type="file"]:hover,
+        input[type="submit"]:hover {
+            background-color: #7ff570c2; /* Light gray background on hover */
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8); /* 3D effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>REAL TIME FIRE MONITORING</h1><br><br><br>
+    <div class="container">
+        <form action="/fire_detection" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Process">
+        </form>
+    </div>
+</body>
+</html>

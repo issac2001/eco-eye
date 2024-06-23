@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Cover Change Visualization</title>
+    <style>
+        body {
+            /*background-image: url('https://images.unsplash.com/photo-1605388752248-e53f9e1760e2?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            */
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20231029/pngtree-bird-s-eye-view-captivating-aerial-perspective-of-a-lush-forest-image_13729549.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff; 
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+        }
+        h2 {
+            text-align: center;
+            color: #ffffff; 
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+            margin-top: 0px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 0px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        }
+        .button-div {
+            margin: 0 50px;
+            text-align: center;
+        }
+        .button-box {
+            background-color: rgba(255, 255, 255, 0.1); /* White color with 50% opacity */
+            margin: 20px; /* Adjust margin as needed */
+            padding: 40px; /* Adjust padding as needed */
+            border-radius: 10px; /* Rounded corners */
+            text-align: center;
+            height: 300px;
+            width: 550px;
+            color: white; /* Set text color to white */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Set font family */
+            font-size: 20px;
+        }
+        .button-box p {
+             text-align: justify;
+        }
+        .button-box:hover {
+            transform: translateY(-5px); /* Move the button box upwards on hover */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5); /* Add a shadow on hover */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            transition: box-shadow 0.3s; /* Smooth transition for the shadow effect */
+        }
+        button:hover {
+            background-color: #59f426; /* Light gray background on hover */
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8); /* 3D effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1> ECO - EYE :  SPATIAL SOLUTIONS FOR <br> ENVIRONMENTAL MANAGEMENT</h1>
+    <!--<h1>ECO - EYE</h1>
+    <h2>SPATIAL SOLUTIONS FOR ENVIRONMENTAL MANAGEMENT</h2>-->
+    <div class="container">
+        <div class="button-box">
+            <p>Our forest fire detection system is equipped with advanced capabilities to detect both fires and smoke. Leveraging cutting-edge technology, it provides real-time alerts for fire outbreaks and smoke detection, enabling swift response and mitigation efforts. With its comprehensive monitoring, it plays a vital role in safeguarding forests and surrounding communities from the devastating impacts of wildfires.</p>
+            <form action="/fire_detection_page" method="get">
+                <button type="submit">Launch Fire Monitoring</button>
+            </form>
+        </div>
+        <div class="button-box">
+            <p>Our visualization platform offers a comprehensive set of features to analyze forest cover change year by year. It enables users to and understand the spatial and temporal patterns of forest change, predict future changes, and identify areas susceptible to high deforestation rates. With its predictive capabilities, it can be used to make informed decisions for sustainable environmental management.</p>
+            <form action="/visualization_page" method="get">
+                <button type="submit">Launch Visualization</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
